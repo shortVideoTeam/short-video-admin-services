@@ -1,6 +1,6 @@
 ## 平台简介
 
-基于 RuoYi-Vue 集成 Mybatis-Plus Lombok Hutool 等便捷开发工具 适配重写相关业务 便于开发 定期与 RuoYi-Vue 同步
+基于 huomai-Vue 集成 Mybatis-Plus Lombok Hutool 等便捷开发工具 适配重写相关业务 便于开发 定期与 huomai-Vue 同步
 * 前端开发框架 Vue、Element UI
 * 后端开发框架 Spring Boot、Redis
 * 容器框架 Undertow 基于 Netty 的高性能容器
@@ -15,7 +15,7 @@
 * 文档框架 knife4j 美化接口文档
 * 代码生成器 一键生成前后端代码
 
-## 修改RuoYi功能
+## 修改huomai功能
 
 ### 依赖改动
 
@@ -24,7 +24,7 @@
 * 容器改动 Tomcat 改为 并发性能更好的 undertow
 * 分页移除 pagehelper 改为 Mybatis-Plus 分页
 * 升级 swagger 为 knife4j
-* 集成 Hutool 5.X 并重写RuoYi部分功能
+* 集成 Hutool 5.X 并重写huomai部分功能
 * 集成 Feign 接口化管理 Http 请求(如三方请求 支付,短信,推送等)
 * 移除 自带服务监控 改为 spring-boot-admin 全方位监控
 * 增加 demo 模块示例(给不会增加模块的小伙伴做参考)
@@ -43,24 +43,24 @@
 
 ### 其他
 
-* 同步升级 RuoYi-Vue 3.5.0
-* 单模块 fast 分支 [RuoYi-Vue-Plus-fast](https://gitee.com/JavaLionLi/RuoYi-Vue-Plus/tree/fast/)
-* Oracle 模块 oracle 分支 [RuoYi-Vue-Plus-oracle](https://gitee.com/JavaLionLi/RuoYi-Vue-Plus/tree/oracle/)
+* 同步升级 huomai-Vue 3.5.0
+* 单模块 fast 分支 [huomai-fast](https://gitee.com/JavaLionLi/huomai/tree/fast/)
+* Oracle 模块 oracle 分支 [huomai-oracle](https://gitee.com/JavaLionLi/huomai/tree/oracle/)
 
 
 ## 重点注意事项
 
-若依文档对事务注解的描述 [关于事务](https://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86)  以下对多数据源事务做补充:
+若依文档对事务注解的描述 [关于事务](https://doc.huomai.vip/huomai/document/htsc.html#%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86)  以下对多数据源事务做补充:
 * 同一个事务下是无法切换数据源的
 * 禁止 父方法使用 @Transactional 创建事务 子方法使用 @DataSource 切换数据源
 * 正确用法: 子方法单独创建事务 或 父方法使用 @Transactional(propagation = Propagation.REQUIRES_NEW) 为所有子方法创建新事务
 
 关于如何使用Tomcat
-* 查看ruoyi-framework模块的pom.xml文件,根据注释更改依赖
-* 查看ruoyi-admin模块中的application.yml文件,根据注释更改配置
+* 查看huomai-framework模块的pom.xml文件,根据注释更改依赖
+* 查看huomai-admin模块中的application.yml文件,根据注释更改配置
 
 关于如何创建新模块
-* 参考ruoyi-demo模块
+* 参考huomai-demo模块
 * 需要改动: 父pom 与 admin模块pom
 
 关于树表生成
@@ -73,11 +73,11 @@
 * 支持 XML 方式注入 参考 system 模块用法
 
 关于vue与boot整合部署  
-* [前端静态资源如何整合到后端访问](https://doc.ruoyi.vip/ruoyi-vue/other/faq.html#前端静态资源如何整合到后端访问)
+* [前端静态资源如何整合到后端访问](https://doc.huomai.vip/huomai-vue/other/faq.html#前端静态资源如何整合到后端访问)
 
 关于修改包名
 * 将文件夹全部修改为 com.xxx
-* 使用IDEA全局替换 com.ruoyi 替换为 com.xxx
+* 使用IDEA全局替换 com.huomai 替换为 com.xxx
 * 严禁手动修改
 
 ## 内置功能
@@ -103,4 +103,4 @@
 
 ## 文档地址
 
-文档地址：http://doc.ruoyi.vip
+文档地址：http://doc.huomai.vip
