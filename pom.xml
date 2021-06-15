@@ -187,6 +187,13 @@
                 <version>${redisson.version}</version>
             </dependency>
 
+            <!-- wx sdk -->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>4.1.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
