@@ -104,3 +104,7 @@
 ## 文档地址
 
 文档地址：http://doc.huomai.vip
+
+
+
+sh /home/sh/huomai-admin/huomai-admin.sh huomai-admin huomai-admin:1.0.0 dev
