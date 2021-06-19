@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.huomai.demo.mapper.TestDemoMapper">
+<mapper namespace="com.huomai.business.mapper.TestDemoMapper">
 
     <resultMap type="com.huomai.business.domain.TestDemo" id="TestDemoResult">
         <result property="id" column="id"/>

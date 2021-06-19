@@ -12,7 +12,7 @@
     <artifactId>huomai-business</artifactId>
 
     <description>
-        demo模块
+        business模块
     </description>
 
     <dependencies>
