@@ -1,7 +1,7 @@
 package com.huomai.business.controller;
 
-import com.huomai.common.core.domain.AjaxResult;
 import com.huomai.business.feign.FeignTestService;
+import com.huomai.common.core.domain.AjaxResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

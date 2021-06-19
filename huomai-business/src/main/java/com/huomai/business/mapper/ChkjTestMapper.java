@@ -1,7 +1,7 @@
 package com.huomai.business.mapper;
 
-import com.huomai.common.core.page.BaseMapperPlus;
 import com.huomai.business.domain.ChkjTest;
+import com.huomai.common.core.page.BaseMapperPlus;
 
 /**
  * 测试Mapper接口
