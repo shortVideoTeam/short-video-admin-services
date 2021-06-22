@@ -10,7 +10,6 @@ import com.huomai.common.core.controller.BaseController;
 import com.huomai.common.core.domain.AjaxResult;
 import com.huomai.common.core.page.TableDataInfo;
 import com.huomai.common.enums.BusinessType;
-import com.huomai.common.utils.poi.ExcelUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 关键词Controller
@@ -48,18 +46,18 @@ public class HuomaiKeywordsController extends BaseController {
 		return iHuomaiKeywordsService.queryPageList(bo);
 	}
 
-	/**
-	 * 导出关键词列表
-	 */
-	@ApiOperation("导出关键词列表")
-	@PreAuthorize("@ss.hasPermi('business:keywords:export')")
-	@Log(title = "关键词", businessType = BusinessType.EXPORT)
-	@GetMapping("/export")
-	public AjaxResult<HuomaiKeywordsVo> export(@Validated HuomaiKeywordsQueryBo bo) {
-		List<HuomaiKeywordsVo> list = iHuomaiKeywordsService.queryList(bo);
-		ExcelUtil<HuomaiKeywordsVo> util = new ExcelUtil<HuomaiKeywordsVo>(HuomaiKeywordsVo.class);
-		return util.exportExcel(list, "关键词");
-	}
+//	/**
+//	 * 导出关键词列表
+//	 */
+//	@ApiOperation("导出关键词列表")
+//	@PreAuthorize("@ss.hasPermi('business:keywords:export')")
+//	@Log(title = "关键词", businessType = BusinessType.EXPORT)
+//	@GetMapping("/export")
+//	public AjaxResult<HuomaiKeywordsVo> export(@Validated HuomaiKeywordsQueryBo bo) {
+//		List<HuomaiKeywordsVo> list = iHuomaiKeywordsService.queryList(bo);
+//		ExcelUtil<HuomaiKeywordsVo> util = new ExcelUtil<HuomaiKeywordsVo>(HuomaiKeywordsVo.class);
+//		return util.exportExcel(list, "关键词");
+//	}
 
 	/**
 	 * 获取关键词详细信息

@@ -50,7 +50,7 @@ public class HuomaiKeywordsServiceImpl extends ServiceImpl<HuomaiKeywordsMapper,
 		Map<String, Object> params = bo.getParams();
 		LambdaQueryWrapper<HuomaiKeywords> lqw = Wrappers.lambdaQuery();
 		lqw.eq(StrUtil.isNotBlank(bo.getKeyword()), HuomaiKeywords::getKeyword, bo.getKeyword());
-		lqw.eq(StrUtil.isNotBlank(bo.getHitword()), HuomaiKeywords::getHitword, bo.getHitword());
+		lqw.like(StrUtil.isNotBlank(bo.getHitword()), HuomaiKeywords::getHitword, bo.getHitword());
 		return lqw;
 	}
 
