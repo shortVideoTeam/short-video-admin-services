@@ -59,4 +59,11 @@ public interface IHuomaiUserService extends IServicePlus<HuomaiUser> {
 	 * @return
 	 */
 	Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+	/**
+	 * 更新用户状态
+	 * @param bo
+	 * @return
+	 */
+	Boolean changeUserStatusById(HuomaiUserEditBo bo);
 }

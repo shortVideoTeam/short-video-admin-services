@@ -23,13 +23,13 @@ public class HuomaiUserEditBo {
 	 * 用户Id
 	 */
 	@ApiModelProperty("用户Id")
+	@NotBlank(message = "用户火脉号Id不能为空")
 	private Long userId;
 
 	/**
 	 * 用户火脉号Id
 	 */
 	@ApiModelProperty("用户火脉号Id")
-	@NotBlank(message = "用户火脉号Id不能为空")
 	private String uuid;
 
 	/**
@@ -48,14 +48,12 @@ public class HuomaiUserEditBo {
 	 * 用户头像
 	 */
 	@ApiModelProperty("用户头像")
-	@NotBlank(message = "用户头像不能为空")
 	private String avatar;
 
 	/**
 	 * 用户昵称
 	 */
 	@ApiModelProperty("用户昵称")
-	@NotBlank(message = "用户昵称不能为空")
 	private String nickName;
 
 	/**
@@ -131,4 +129,10 @@ public class HuomaiUserEditBo {
 	 */
 	@ApiModelProperty("备注")
 	private String remark;
+
+	/**
+	 * 状态
+	 */
+	@ApiModelProperty("状态")
+	private String status;
 }

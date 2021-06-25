@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -98,11 +99,6 @@ public class HuomaiUser implements Serializable {
 	private String address;
 
 	/**
-	 * 个人介绍
-	 */
-	private String desc;
-
-	/**
 	 * 创建者
 	 */
 	@TableField(fill = FieldFill.INSERT)
@@ -130,5 +126,18 @@ public class HuomaiUser implements Serializable {
 	 * 备注
 	 */
 	private String remark;
+
+	/**
+	 * 个人介绍
+	 */
+	@ApiModelProperty("个人介绍")
+	private String userDesc;
+
+	/**
+	 * 用户状态
+	 */
+	@ApiModelProperty("用户状态")
+	private String status;
+
 
 }
