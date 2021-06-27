@@ -105,7 +105,7 @@ public class HuomaiUserAddBo {
 	 * 个人介绍
 	 */
 	@ApiModelProperty("个人介绍")
-	private String desc;
+	private String userDesc;
 
 	/**
 	 * 创建者

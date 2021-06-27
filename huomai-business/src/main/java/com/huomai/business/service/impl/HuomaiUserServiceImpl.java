@@ -62,7 +62,7 @@ public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiU
 		lqw.eq(bo.getCity() != null, HuomaiUser::getCity, bo.getCity());
 		lqw.eq(bo.getArea() != null, HuomaiUser::getArea, bo.getArea());
 		lqw.eq(StrUtil.isNotBlank(bo.getAddress()), HuomaiUser::getAddress, bo.getAddress());
-		lqw.eq(StrUtil.isNotBlank(bo.getDesc()), HuomaiUser::getDesc, bo.getDesc());
+		lqw.eq(StrUtil.isNotBlank(bo.getUserDesc()), HuomaiUser::getUserDesc, bo.getUserDesc());
 		return lqw;
 	}
 
