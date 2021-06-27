@@ -98,11 +98,6 @@ public class HuomaiUser implements Serializable {
 	private String address;
 
 	/**
-	 * 个人介绍
-	 */
-	private String desc;
-
-	/**
 	 * 创建者
 	 */
 	@TableField(fill = FieldFill.INSERT)
