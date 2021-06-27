@@ -100,7 +100,7 @@ public class HuomaiUser implements Serializable {
 	/**
 	 * 个人介绍
 	 */
-	private String userDesc;
+	private String desc;
 
 	/**
 	 * 创建者
@@ -130,5 +130,16 @@ public class HuomaiUser implements Serializable {
 	 * 备注
 	 */
 	private String remark;
+
+	/**
+	 * 个人介绍
+	 */
+	private String userDesc;
+
+	/**
+	 * 用户状态
+	 */
+	private String status;
+
 
 }

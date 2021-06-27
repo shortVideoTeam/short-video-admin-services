@@ -134,4 +134,25 @@ public class HuomaiUserVo {
 	private String remark;
 
 
+	/**
+	 * 用户状态
+	 */
+	@Excel(name = "用户状态")
+	@ApiModelProperty("用户状态")
+	private String status;
+
+	/**
+	 * 创建时间
+	 */
+	@ApiModelProperty("创建时间")
+	@Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
+
+	/**
+	 * 邀请码
+	 */
+	@Excel(name="邀请码")
+	@ApiModelProperty("邀请码")
+	private String inviteCode;
 }

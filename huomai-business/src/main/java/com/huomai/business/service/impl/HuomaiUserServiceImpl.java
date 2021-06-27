@@ -50,19 +50,8 @@ public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiU
 		Map<String, Object> params = bo.getParams();
 		LambdaQueryWrapper<HuomaiUser> lqw = Wrappers.lambdaQuery();
 		lqw.eq(StrUtil.isNotBlank(bo.getUuid()), HuomaiUser::getUuid, bo.getUuid());
-		lqw.eq(StrUtil.isNotBlank(bo.getOpenid()), HuomaiUser::getOpenid, bo.getOpenid());
-		lqw.eq(StrUtil.isNotBlank(bo.getUnionid()), HuomaiUser::getUnionid, bo.getUnionid());
-		lqw.eq(StrUtil.isNotBlank(bo.getAvatar()), HuomaiUser::getAvatar, bo.getAvatar());
-		lqw.like(StrUtil.isNotBlank(bo.getNickName()), HuomaiUser::getNickName, bo.getNickName());
-		lqw.eq(StrUtil.isNotBlank(bo.getSex()), HuomaiUser::getSex, bo.getSex());
-		lqw.eq(bo.getBirthday() != null, HuomaiUser::getBirthday, bo.getBirthday());
-		lqw.eq(StrUtil.isNotBlank(bo.getPhone()), HuomaiUser::getPhone, bo.getPhone());
-		lqw.eq(StrUtil.isNotBlank(bo.getConstellation()), HuomaiUser::getConstellation, bo.getConstellation());
-		lqw.eq(bo.getProvince() != null, HuomaiUser::getProvince, bo.getProvince());
-		lqw.eq(bo.getCity() != null, HuomaiUser::getCity, bo.getCity());
-		lqw.eq(bo.getArea() != null, HuomaiUser::getArea, bo.getArea());
-		lqw.eq(StrUtil.isNotBlank(bo.getAddress()), HuomaiUser::getAddress, bo.getAddress());
-		lqw.eq(StrUtil.isNotBlank(bo.getUserDesc()), HuomaiUser::getUserDesc, bo.getUserDesc());
+		lqw.eq(StrUtil.isNotBlank(bo.getStatus()),HuomaiUser::getStatus, bo.getStatus() );
+		lqw.eq(bo.getCreateTime() != null, HuomaiUser::getCreateTime, bo.getCreateTime());
 		return lqw;
 	}
 
@@ -95,5 +84,12 @@ public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiU
 			//TODO 做一些业务上的校验,判断是否需要校验
 		}
 		return removeByIds(ids);
+	}
+
+	@Override
+	public Boolean changeUserStatusById(HuomaiUserEditBo bo) {
+		HuomaiUser update = BeanUtil.toBean(bo, HuomaiUser.class);
+		validEntityBeforeSave(update);
+		return updateById(update);
 	}
 }
