@@ -30,7 +30,7 @@
             AND u.`status` = #{bo.status}
         </if>
         <if test="bo.createTime != null">
-            AND u.create_time = #{bo.createTime}
+            AND date_format(u.create_time,'%y%m%d') = date_format(#{bo.createTime},'%y%m%d')
         </if>
     </select>
 
