@@ -16,10 +16,10 @@
     FROM
         `huomai_user` AS u
     WHERE 1 = 1
-        <if test="bo.uuId != null">
+        <if test="bo.uuId != null and bo.uuId != '' ">
             AND u.uuid = #{bo.uuId}
         </if>
-        <if test="bo.userId != null">
+        <if test="bo.userId != null and bo.userId != '' ">
             AND u.user_id = #{bo.userId}
         </if>
     </select>

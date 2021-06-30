@@ -18,18 +18,24 @@
             u.money,
             u.income,
             ( SELECT COUNT( 1 ) FROM huomai_user_invite AS i WHERE i.user_id = u.user_id ) AS invite_num,
-            ( SELECT i.user_id FROM huomai_user_invite AS i WHERE i.by_user_id = u.user_id LIMIT 1 ) AS invite_userId
+            (
+            SELECT
+            uuid
+            FROM
+            huomai_user
+            WHERE
+            user_id = ( SELECT i.user_id FROM huomai_user_invite AS i WHERE i.by_user_id = u.user_id LIMIT 1 )) AS invite_userId
         FROM
             huomai_user AS u
         WHERE
             1 =1
-        <if test="bo.uuId != null">
-            AND u.uuid = #{bo.uuId}
+        <if test="bo.uuid != null and bo.uuid != '' ">
+            AND u.uuid = #{bo.uuid}
         </if>
-        <if test="bo.status != null">
+        <if test="bo.status != null and bo.status != '' ">
             AND u.`status` = #{bo.status}
         </if>
-        <if test="bo.createTime != null">
+        <if test="bo.createTime != null and bo.createTime != '' ">
             AND date_format(u.create_time,'%y%m%d') = date_format(#{bo.createTime},'%y%m%d')
         </if>
     </select>
