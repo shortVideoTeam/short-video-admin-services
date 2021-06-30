@@ -12,9 +12,9 @@ import com.huomai.business.domain.HuomaiUser;
 import com.huomai.business.mapper.HuomaiUserMapper;
 import com.huomai.business.service.IHuomaiUserService;
 import com.huomai.business.vo.HuomaiUserVo;
-import com.huomai.common.core.page.PagePlus;
 import com.huomai.common.core.page.TableDataInfo;
 import com.huomai.common.utils.PageUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,6 +30,9 @@ import java.util.Map;
 @Service
 public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiUser> implements IHuomaiUserService {
 
+	@Autowired
+	private HuomaiUserMapper userMapper;
+
 	@Override
 	public HuomaiUserVo queryById(Long userId) {
 		return getVoById(userId, HuomaiUserVo.class);
@@ -37,8 +40,8 @@ public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiU
 
 	@Override
 	public TableDataInfo<HuomaiUserVo> queryPageList(HuomaiUserQueryBo bo) {
-		PagePlus<HuomaiUser, HuomaiUserVo> result = pageVo(PageUtils.buildPagePlus(), buildQueryWrapper(bo), HuomaiUserVo.class);
-		return PageUtils.buildDataInfo(result);
+		List<HuomaiUserVo> list = userMapper.queryList(PageUtils.buildPage(), bo);
+		return PageUtils.buildDataInfo(list);
 	}
 
 	@Override

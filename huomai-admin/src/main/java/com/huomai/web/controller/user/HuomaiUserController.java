@@ -44,7 +44,6 @@ public class HuomaiUserController extends BaseController {
 		return iHuomaiUserService.queryPageList(bo);
 	}
 
-
 	/**
 	 * 导出用户信息列表
 	 */

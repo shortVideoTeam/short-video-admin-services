@@ -4,8 +4,34 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huomai.business.mapper.HuomaiUserMapper">
 
-<!--    <select id="selectUserListWithInvite" >-->
-<!--        -->
-<!--    </select>-->
+    <select id="queryList" resultType="com.huomai.business.vo.HuomaiUserVo">
+        SELECT
+            u.user_id,
+            u.uuid,
+            u.openid,
+            u.avatar,
+            u.nick_name,
+            u.phone,
+            u.invite_code,
+            u.`status`,
+            u.create_time,
+            u.money,
+            u.income,
+            ( SELECT COUNT( 1 ) FROM huomai_user_invite AS i WHERE i.user_id = u.user_id ) AS invite_num,
+            ( SELECT i.user_id FROM huomai_user_invite AS i WHERE i.by_user_id = u.user_id LIMIT 1 ) AS invite_userId
+        FROM
+            huomai_user AS u
+        WHERE
+            1 =1
+        <if test="bo.uuId != null">
+            AND u.uuid = #{bo.uuId}
+        </if>
+        <if test="bo.status != null">
+            AND u.`status` = #{bo.status}
+        </if>
+        <if test="bo.createTime != null">
+            AND u.create_time = #{bo.createTime}
+        </if>
+    </select>
 
 </mapper>

@@ -5,7 +5,7 @@
 <mapper namespace="com.huomai.business.mapper.HuomaiUserFollowMapper">
 
     <select id="queryList" resultType="com.huomai.business.vo.HuomaiUserFollowVo">
-        SELECT
+    SELECT
         u.user_id,
         u.uuid,
         u.openid,
@@ -13,9 +13,9 @@
         u.nick_name,
         u.phone,
         ( SELECT count( 1 ) FROM huomai_user_follow WHERE user_id = u.user_id ) AS follow_number
-        FROM
+    FROM
         `huomai_user` AS u
-        WHERE 1 = 1
+    WHERE 1 = 1
         <if test="bo.uuId != null">
             AND u.uuid = #{bo.uuId}
         </if>
@@ -39,7 +39,7 @@
         huomai_user AS u
         LEFT JOIN huomai_user_follow AS f ON f.follow_user_id = u.user_id
     WHERE
-        f.user_id = ${bo.userId}
+        f.user_id = #{bo.userId}
     </select>
 
 </mapper>
