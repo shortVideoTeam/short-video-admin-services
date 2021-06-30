@@ -35,14 +35,14 @@ import java.util.List;
     tags = {"红包金额配置管理"})
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @RestController
-@RequestMapping("/business/walle")
+@RequestMapping("/business/config")
 public class HuomaiGiftConfigController extends BaseController {
 
   private final IHuomaiGiftConfigService iHuomaiGiftConfigService;
 
   /** 查询红包金额配置列表 */
   @ApiOperation("查询红包金额配置列表")
-  @PreAuthorize("@ss.hasPermi('system:config:list')")
+  @PreAuthorize("@ss.hasPermi('business:config:list')")
   @GetMapping("/list")
   public TableDataInfo<HuomaiGiftConfigVo> list(@Validated HuomaiGiftConfigQueryBo bo) {
     return iHuomaiGiftConfigService.queryPageList(bo);
@@ -50,7 +50,7 @@ public class HuomaiGiftConfigController extends BaseController {
 
   /** 导出红包金额配置列表 */
   @ApiOperation("导出红包金额配置列表")
-  @PreAuthorize("@ss.hasPermi('system:config:export')")
+  @PreAuthorize("@ss.hasPermi('business:config:export')")
   @Log(title = "红包金额配置", businessType = BusinessType.EXPORT)
   @GetMapping("/export")
   public AjaxResult<HuomaiGiftConfigVo> export(@Validated HuomaiGiftConfigQueryBo bo) {
@@ -62,7 +62,7 @@ public class HuomaiGiftConfigController extends BaseController {
 
   /** 获取红包金额配置详细信息 */
   @ApiOperation("获取红包金额配置详细信息")
-  @PreAuthorize("@ss.hasPermi('system:config:query')")
+  @PreAuthorize("@ss.hasPermi('business:config:query')")
   @GetMapping("/{id}")
   public AjaxResult<HuomaiGiftConfigVo> getInfo(
       @NotNull(message = "主键不能为空") @PathVariable("id") Long id) {
@@ -71,7 +71,7 @@ public class HuomaiGiftConfigController extends BaseController {
 
   /** 新增红包金额配置 */
   @ApiOperation("新增红包金额配置")
-  @PreAuthorize("@ss.hasPermi('system:config:add')")
+  @PreAuthorize("@ss.hasPermi('business:config:add')")
   @Log(title = "红包金额配置", businessType = BusinessType.INSERT)
   @PostMapping()
   public AjaxResult<Void> add(@Validated @RequestBody HuomaiGiftConfigAddBo bo) {
@@ -80,7 +80,7 @@ public class HuomaiGiftConfigController extends BaseController {
 
   /** 修改红包金额配置 */
   @ApiOperation("修改红包金额配置")
-  @PreAuthorize("@ss.hasPermi('system:config:edit')")
+  @PreAuthorize("@ss.hasPermi('business:config:edit')")
   @Log(title = "红包金额配置", businessType = BusinessType.UPDATE)
   @PutMapping()
   public AjaxResult<Void> edit(@Validated @RequestBody HuomaiGiftConfigEditBo bo) {
@@ -89,7 +89,7 @@ public class HuomaiGiftConfigController extends BaseController {
 
   /** 删除红包金额配置 */
   @ApiOperation("删除红包金额配置")
-  @PreAuthorize("@ss.hasPermi('system:config:remove')")
+  @PreAuthorize("@ss.hasPermi('business:config:remove')")
   @Log(title = "红包金额配置", businessType = BusinessType.DELETE)
   @DeleteMapping("/{ids}")
   public AjaxResult<Void> remove(@NotEmpty(message = "主键不能为空") @PathVariable Long[] ids) {
