@@ -4,5 +4,42 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huomai.business.mapper.HuomaiUserFollowMapper">
 
+    <select id="queryList" resultType="com.huomai.business.vo.HuomaiUserFollowVo">
+        SELECT
+        u.user_id,
+        u.uuid,
+        u.openid,
+        u.avatar,
+        u.nick_name,
+        u.phone,
+        ( SELECT count( 1 ) FROM huomai_user_follow WHERE user_id = u.user_id ) AS follow_number
+        FROM
+        `huomai_user` AS u
+        WHERE 1 = 1
+        <if test="bo.uuId != null">
+            AND u.uuid = #{bo.uuId}
+        </if>
+        <if test="bo.userId != null">
+            AND u.user_id = #{bo.userId}
+        </if>
+    </select>
+
+    <select id="queryDetailList" resultType="com.huomai.business.vo.HuomaiUserFollowDetailVo">
+    SELECT
+        u.user_id,
+        u.uuid,
+        u.openid,
+        u.avatar,
+        u.nick_name,
+        u.phone,
+        f.source,
+        f.create_time,
+        f.remark
+    FROM
+        huomai_user AS u
+        LEFT JOIN huomai_user_follow AS f ON f.follow_user_id = u.user_id
+    WHERE
+        f.user_id = ${bo.userId}
+    </select>
 
 </mapper>

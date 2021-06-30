@@ -1,18 +1,15 @@
 package com.huomai.business.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * 用户关注视图对象 huomai_user_follow
- *
- * @author huomai
- * @date 2021-06-19
- */
+import java.util.Date;
+
 @Data
 @ApiModel("用户关注视图对象")
-public class HuomaiUserFollowVo {
+public class HuomaiUserFollowDetailVo {
 
   private static final long serialVersionUID = 1L;
 
@@ -35,6 +32,13 @@ public class HuomaiUserFollowVo {
   @ApiModelProperty("用户手机号")
   private String phone;
 
-  @ApiModelProperty("用户关注总数")
-  private String followNumber;
+  @ApiModelProperty("来源")
+  private int source;
+
+  @ApiModelProperty("关注时间")
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private Date createTime;
+
+  @ApiModelProperty("备注")
+  private String remark;
 }

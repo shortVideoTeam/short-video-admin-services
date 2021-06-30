@@ -28,6 +28,7 @@ public class HuomaiUserFollowQueryBo extends BaseEntity {
 	 */
 	@ApiModelProperty("当前页数")
 	private Integer pageNum;
+
 	/**
 	 * 排序列
 	 */
@@ -39,11 +40,12 @@ public class HuomaiUserFollowQueryBo extends BaseEntity {
 	@ApiModelProperty(value = "排序的方向", example = "asc,desc")
 	private String isAsc;
 
-
 	/**
-	 * 关注用户id
+	 * 用户id
 	 */
-	@ApiModelProperty("关注用户id")
-	private Long followUserId;
+	@ApiModelProperty("用户id")
+	private Long userId;
 
+	@ApiModelProperty("用户火脉号")
+	private Long uuId;
 }
