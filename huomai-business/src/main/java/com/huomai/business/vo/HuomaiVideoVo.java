@@ -1,9 +1,12 @@
 package com.huomai.business.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huomai.common.annotation.Excel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.Date;
 
 
 /**
@@ -102,11 +105,11 @@ public class HuomaiVideoVo {
 	private Long viewNum;
 
 	/**
-	 * 关键词ID (按","逗号拼接)
+	 * 关键词
 	 */
-	@Excel(name = "关键词ID (按逗号拼接)")
-	@ApiModelProperty("关键词ID (按逗号拼接)")
-	private String keywordId;
+	@Excel(name = "关键词")
+	@ApiModelProperty("关键词")
+	private String keyword;
 
 	/**
 	 * 备注
@@ -115,5 +118,40 @@ public class HuomaiVideoVo {
 	@ApiModelProperty("备注")
 	private String remark;
 
+	/**
+	 * 创建时间
+	 */
+	@ApiModelProperty("创建时间")
+	@Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
 
+
+	/**
+	 * 用户火脉号Id
+	 */
+	@Excel(name = "用户火脉号Id")
+	@ApiModelProperty("用户火脉号Id")
+	private String uuid;
+
+	/**
+	 * 用户头像
+	 */
+	@Excel(name = "用户头像")
+	@ApiModelProperty("用户头像")
+	private String avatar;
+
+	/**
+	 * 用户昵称
+	 */
+	@Excel(name = "用户昵称")
+	@ApiModelProperty("用户昵称")
+	private String nickName;
+
+	/**
+	 * 手机号
+	 */
+	@Excel(name = "手机号")
+	@ApiModelProperty("手机号")
+	private String phone;
 }

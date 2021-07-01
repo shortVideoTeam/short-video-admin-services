@@ -59,4 +59,11 @@ public interface IHuomaiVideoService extends IServicePlus<HuomaiVideo> {
 	 * @return
 	 */
 	Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+
+	/**
+	 * 更改视频状态
+	 * @param bo
+	 * @return
+	 */
+	boolean changeUserStatusById(HuomaiVideoEditBo bo);
 }

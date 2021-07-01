@@ -4,5 +4,44 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huomai.business.mapper.HuomaiVideoMapper">
 
+    <select id="queryList" resultType="com.huomai.business.vo.HuomaiVideoVo">
+        SELECT
+            u.user_id,
+            u.uuid,
+            u.avatar,
+            u.nick_name,
+            u.phone,
+            v.video_id,
+            v.title,
+            v.video_url,
+            v.duration,
+            v.topic,
+            v.buddy,
+            v.visible,
+            v.`status`,
+            v.star_num,
+            v.comment_num,
+            v.view_num,
+            v.remark,
+            v.create_time,
+            ( SELECT GROUP_CONCAT( k.keyword ) FROM huomai_keywords AS k WHERE FIND_IN_SET( k.keyword_id , v.keyword_id ) ) AS keyword
+        FROM
+            huomai_video AS v
+            LEFT JOIN huomai_user AS u ON v.user_id = u.user_id
+        WHERE
+            1 = 1
+        <if test="bo.uuid != null and bo.uuid != '' ">
+            AND u.uuid=#{bo.uuid}
+        </if>
+        <if test="bo.title != null and bo.title != '' ">
+            AND v.title=#{bo.title}
+        </if>
+        <if test="bo.status != null and bo.status != '' ">
+            AND v.`status`=#{bo.status}
+        </if>
+        <if test="bo.keywordId != null and bo.keywordId != '' ">
+            AND v.keyword_id LIKE concat('%',#{bo.keywordId},'%')
+        </if>
+    </select>
 
 </mapper>
