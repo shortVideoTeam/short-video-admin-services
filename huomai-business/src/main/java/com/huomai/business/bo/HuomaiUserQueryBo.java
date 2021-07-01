@@ -52,4 +52,10 @@ public class HuomaiUserQueryBo extends BaseEntity {
 	@ApiModelProperty("用户状态")
 	private String status;
 
+	/**
+	 * 用户ID
+	 */
+	@ApiModelProperty("用户ID")
+	private String userId;
+
 }

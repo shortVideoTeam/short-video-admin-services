@@ -23,7 +23,7 @@ public interface IHuomaiUserService extends IServicePlus<HuomaiUser> {
 	 *
 	 * @return
 	 */
-	HuomaiUserVo queryById(Long userId);
+	TableDataInfo<HuomaiUserVo> queryById(HuomaiUserQueryBo bo);
 
 	/**
 	 * 查询列表

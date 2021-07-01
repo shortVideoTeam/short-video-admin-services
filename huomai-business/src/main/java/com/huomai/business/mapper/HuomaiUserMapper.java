@@ -24,4 +24,6 @@ public interface HuomaiUserMapper extends BaseMapperPlus<HuomaiUser> {
 	 * @return
 	 */
 	List<HuomaiUserVo> queryList(@Param("page") Page page, @Param("bo") HuomaiUserQueryBo bo);
+
+	List<HuomaiUserVo> queryDetailList(@Param("page")Page page , @Param("bo") HuomaiUserQueryBo bo);
 }

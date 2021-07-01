@@ -28,71 +28,72 @@ import java.util.Map;
  * @date 2021-06-19
  */
 @Service
-public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiUser> implements IHuomaiUserService {
+public class HuomaiUserServiceImpl extends ServiceImpl<HuomaiUserMapper, HuomaiUser>
+    implements IHuomaiUserService {
 
-	@Autowired
-	private HuomaiUserMapper userMapper;
+  @Autowired private HuomaiUserMapper userMapper;
 
-	@Override
-	public HuomaiUserVo queryById(Long userId) {
-		return getVoById(userId, HuomaiUserVo.class);
-	}
+  @Override
+  public TableDataInfo<HuomaiUserVo> queryById(HuomaiUserQueryBo bo) {
+    List<HuomaiUserVo> list = userMapper.queryDetailList(PageUtils.buildPage(), bo);
+    return PageUtils.buildDataInfo(list);
+  }
 
-	@Override
-	public TableDataInfo<HuomaiUserVo> queryPageList(HuomaiUserQueryBo bo) {
-		List<HuomaiUserVo> list = userMapper.queryList(PageUtils.buildPage(), bo);
-		return PageUtils.buildDataInfo(list);
-	}
+  @Override
+  public TableDataInfo<HuomaiUserVo> queryPageList(HuomaiUserQueryBo bo) {
+    List<HuomaiUserVo> list = userMapper.queryList(PageUtils.buildPage(), bo);
+    return PageUtils.buildDataInfo(list);
+  }
 
-	@Override
-	public List<HuomaiUserVo> queryList(HuomaiUserQueryBo bo) {
-		return listVo(buildQueryWrapper(bo), HuomaiUserVo.class);
-	}
+  @Override
+  public List<HuomaiUserVo> queryList(HuomaiUserQueryBo bo) {
+    return listVo(buildQueryWrapper(bo), HuomaiUserVo.class);
+  }
 
-	private LambdaQueryWrapper<HuomaiUser> buildQueryWrapper(HuomaiUserQueryBo bo) {
-		Map<String, Object> params = bo.getParams();
-		LambdaQueryWrapper<HuomaiUser> lqw = Wrappers.lambdaQuery();
-		lqw.eq(StrUtil.isNotBlank(bo.getUuid()), HuomaiUser::getUuid, bo.getUuid());
-		lqw.eq(StrUtil.isNotBlank(bo.getStatus()),HuomaiUser::getStatus, bo.getStatus() );
-		lqw.eq(bo.getCreateTime() != null, HuomaiUser::getCreateTime, bo.getCreateTime());
-		return lqw;
-	}
+  private LambdaQueryWrapper<HuomaiUser> buildQueryWrapper(HuomaiUserQueryBo bo) {
+    Map<String, Object> params = bo.getParams();
+    LambdaQueryWrapper<HuomaiUser> lqw = Wrappers.lambdaQuery();
+    lqw.eq(StrUtil.isNotBlank(bo.getUuid()), HuomaiUser::getUuid, bo.getUuid());
+    lqw.eq(StrUtil.isNotBlank(bo.getStatus()), HuomaiUser::getStatus, bo.getStatus());
+    lqw.eq(bo.getCreateTime() != null, HuomaiUser::getCreateTime, bo.getCreateTime());
+    return lqw;
+  }
 
-	@Override
-	public Boolean insertByAddBo(HuomaiUserAddBo bo) {
-		HuomaiUser add = BeanUtil.toBean(bo, HuomaiUser.class);
-		validEntityBeforeSave(add);
-		return save(add);
-	}
+  @Override
+  public Boolean insertByAddBo(HuomaiUserAddBo bo) {
+    HuomaiUser add = BeanUtil.toBean(bo, HuomaiUser.class);
+    validEntityBeforeSave(add);
+    return save(add);
+  }
 
-	@Override
-	public Boolean updateByEditBo(HuomaiUserEditBo bo) {
-		HuomaiUser update = BeanUtil.toBean(bo, HuomaiUser.class);
-		validEntityBeforeSave(update);
-		return updateById(update);
-	}
+  @Override
+  public Boolean updateByEditBo(HuomaiUserEditBo bo) {
+    HuomaiUser update = BeanUtil.toBean(bo, HuomaiUser.class);
+    validEntityBeforeSave(update);
+    return updateById(update);
+  }
 
-	/**
-	 * 保存前的数据校验
-	 *
-	 * @param entity 实体类数据
-	 */
-	private void validEntityBeforeSave(HuomaiUser entity) {
-		//TODO 做一些数据校验,如唯一约束
-	}
+  /**
+   * 保存前的数据校验
+   *
+   * @param entity 实体类数据
+   */
+  private void validEntityBeforeSave(HuomaiUser entity) {
+    // TODO 做一些数据校验,如唯一约束
+  }
 
-	@Override
-	public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
-		if (isValid) {
-			//TODO 做一些业务上的校验,判断是否需要校验
-		}
-		return removeByIds(ids);
-	}
+  @Override
+  public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
+    if (isValid) {
+      // TODO 做一些业务上的校验,判断是否需要校验
+    }
+    return removeByIds(ids);
+  }
 
-	@Override
-	public Boolean changeUserStatusById(HuomaiUserEditBo bo) {
-		HuomaiUser update = BeanUtil.toBean(bo, HuomaiUser.class);
-		validEntityBeforeSave(update);
-		return updateById(update);
-	}
+  @Override
+  public Boolean changeUserStatusById(HuomaiUserEditBo bo) {
+    HuomaiUser update = BeanUtil.toBean(bo, HuomaiUser.class);
+    validEntityBeforeSave(update);
+    return updateById(update);
+  }
 }

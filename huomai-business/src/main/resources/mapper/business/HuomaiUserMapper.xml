@@ -40,4 +40,33 @@
         </if>
     </select>
 
+    <select id="queryDetailList" resultType="com.huomai.business.vo.HuomaiUserVo">
+        SELECT
+            u.user_id,
+            u.uuid,
+            u.openid,
+            u.avatar,
+            u.nick_name,
+            u.phone,
+            u.invite_code,
+            u.`status`,
+            u.create_time,
+            u.money,
+            u.income,
+            ( SELECT COUNT( 1 ) FROM huomai_user_invite AS i WHERE i.user_id = u.user_id ) AS invite_num,
+            (
+            SELECT
+                uuid
+            FROM
+                huomai_user
+            WHERE
+            user_id = ( SELECT i.user_id FROM huomai_user_invite AS i WHERE i.by_user_id = u.user_id LIMIT 1 )) AS invite_userId
+        FROM
+            huomai_user AS u
+            LEFT JOIN huomai_user_invite i ON i.by_user_id = u.user_id
+        WHERE
+            1 = 1
+            AND i.user_id = #{bo.userId}
+    </select>
+
 </mapper>
