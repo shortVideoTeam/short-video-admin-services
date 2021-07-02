@@ -41,24 +41,21 @@ public class HuomaiVideoCommentQueryBo extends BaseEntity {
 
 
 	/**
-	 * 视频ID
-	 */
-	@ApiModelProperty("视频ID")
-	private Long videoId;
-	/**
 	 * 评论内容
 	 */
 	@ApiModelProperty("评论内容")
 	private String content;
+
 	/**
 	 * 评论用户Id
 	 */
 	@ApiModelProperty("评论用户Id")
-	private Long userId;
+	private Long uuid;
+
 	/**
-	 * 评论点赞数
+	 * 视频标题
 	 */
-	@ApiModelProperty("评论点赞数")
-	private Long starNum;
+	@ApiModelProperty("视频标题")
+	private String title;
 
 }

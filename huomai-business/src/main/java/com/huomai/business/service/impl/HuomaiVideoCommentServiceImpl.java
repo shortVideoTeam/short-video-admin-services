@@ -1,7 +1,6 @@
 package com.huomai.business.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -12,9 +11,9 @@ import com.huomai.business.domain.HuomaiVideoComment;
 import com.huomai.business.mapper.HuomaiVideoCommentMapper;
 import com.huomai.business.service.IHuomaiVideoCommentService;
 import com.huomai.business.vo.HuomaiVideoCommentVo;
-import com.huomai.common.core.page.PagePlus;
 import com.huomai.common.core.page.TableDataInfo;
 import com.huomai.common.utils.PageUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,6 +29,9 @@ import java.util.Map;
 @Service
 public class HuomaiVideoCommentServiceImpl extends ServiceImpl<HuomaiVideoCommentMapper, HuomaiVideoComment> implements IHuomaiVideoCommentService {
 
+	@Autowired
+	private HuomaiVideoCommentMapper commentMapper;
+
 	@Override
 	public HuomaiVideoCommentVo queryById(Long commentId) {
 		return getVoById(commentId, HuomaiVideoCommentVo.class);
@@ -37,8 +39,8 @@ public class HuomaiVideoCommentServiceImpl extends ServiceImpl<HuomaiVideoCommen
 
 	@Override
 	public TableDataInfo<HuomaiVideoCommentVo> queryPageList(HuomaiVideoCommentQueryBo bo) {
-		PagePlus<HuomaiVideoComment, HuomaiVideoCommentVo> result = pageVo(PageUtils.buildPagePlus(), buildQueryWrapper(bo), HuomaiVideoCommentVo.class);
-		return PageUtils.buildDataInfo(result);
+		List<HuomaiVideoCommentVo> list = commentMapper.queryList(PageUtils.buildPage(), bo);
+		return PageUtils.buildDataInfo(list);
 	}
 
 	@Override
@@ -49,10 +51,10 @@ public class HuomaiVideoCommentServiceImpl extends ServiceImpl<HuomaiVideoCommen
 	private LambdaQueryWrapper<HuomaiVideoComment> buildQueryWrapper(HuomaiVideoCommentQueryBo bo) {
 		Map<String, Object> params = bo.getParams();
 		LambdaQueryWrapper<HuomaiVideoComment> lqw = Wrappers.lambdaQuery();
-		lqw.eq(bo.getVideoId() != null, HuomaiVideoComment::getVideoId, bo.getVideoId());
-		lqw.eq(StrUtil.isNotBlank(bo.getContent()), HuomaiVideoComment::getContent, bo.getContent());
-		lqw.eq(bo.getUserId() != null, HuomaiVideoComment::getUserId, bo.getUserId());
-		lqw.eq(bo.getStarNum() != null, HuomaiVideoComment::getStarNum, bo.getStarNum());
+//		lqw.eq(bo.getVideoId() != null, HuomaiVideoComment::getVideoId, bo.getVideoId());
+//		lqw.eq(StrUtil.isNotBlank(bo.getContent()), HuomaiVideoComment::getContent, bo.getContent());
+//		lqw.eq(bo.getUserId() != null, HuomaiVideoComment::getUserId, bo.getUserId());
+//		lqw.eq(bo.getStarNum() != null, HuomaiVideoComment::getStarNum, bo.getStarNum());
 		return lqw;
 	}
 

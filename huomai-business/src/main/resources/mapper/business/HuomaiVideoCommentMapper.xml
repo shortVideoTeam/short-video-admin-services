@@ -4,5 +4,30 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huomai.business.mapper.HuomaiVideoCommentMapper">
 
+    <select id="queryList" resultType="com.huomai.business.vo.HuomaiVideoCommentVo">
+        SELECT
+            c.*,
+            v.title,
+            v.video_url,
+            u.uuid,
+            u.nick_name,
+            u.avatar,
+            u.phone
+        FROM
+            `huomai_video_comment` AS c
+            LEFT JOIN huomai_video AS v ON c.video_id = v.video_id
+            LEFT JOIN huomai_user AS u ON c.user_id = u.user_id
+        WHERE
+            1 = 1
+        <if test=" bo.uuid != '' and bo.uuid != null ">
+            AND u.uuid = #{bo.uuid}
+        </if>
+        <if test=" bo.title != '' and bo.title != null ">
+            AND v.title = #{bo.title}
+        </if>
+        <if test=" bo.content != '' and bo.content != null ">
+            AND c.content = #{bo.content}
+        </if>
+    </select>
 
 </mapper>
