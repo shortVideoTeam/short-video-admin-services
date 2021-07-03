@@ -30,4 +30,22 @@
         </if>
     </select>
 
+    <select id="queryListDetail" resultType="com.huomai.business.vo.HuomaiVideoCommentReplyVo">
+        SELECT
+            r.*,
+            u.uuid,
+            u.avatar,
+            u.nick_name
+        FROM
+            huomai_video_comment_reply AS r
+            LEFT JOIN huomai_user AS u ON r.user_id = u.user_id
+        WHERE
+         1 = 1
+        <if test=" bo.commentId != null and bo.commentId != '' ">
+            AND r.comment_id = #{bo.commentId}
+        </if>
+        ORDER BY r.create_time
+
+    </select>
+
 </mapper>

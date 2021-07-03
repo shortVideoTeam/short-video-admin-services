@@ -1,6 +1,7 @@
 package com.huomai.business.bo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.huomai.common.annotation.Excel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -38,7 +39,6 @@ public class HuomaiOrderEditBo {
 	 * 用户ID
 	 */
 	@ApiModelProperty("用户ID")
-	@NotNull(message = "用户ID不能为空")
 	private Long userId;
 
 	/**
@@ -57,7 +57,6 @@ public class HuomaiOrderEditBo {
 	 * 金额
 	 */
 	@ApiModelProperty("金额")
-	@NotNull(message = "金额不能为空")
 	private BigDecimal amount;
 
 	/**
@@ -78,4 +77,17 @@ public class HuomaiOrderEditBo {
 	 */
 	@ApiModelProperty("支付方式 1-微信 2-余额")
 	private String payWay;
+
+	/**
+	 * 审核状态
+	 */
+	@ApiModelProperty("审核状态")
+	private String auditStatus;
+
+	/**
+	 * 审核时间
+	 */
+	@ApiModelProperty("审核时间")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date auditTime;
 }

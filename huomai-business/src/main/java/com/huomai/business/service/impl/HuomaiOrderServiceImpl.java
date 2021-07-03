@@ -12,9 +12,11 @@ import com.huomai.business.domain.HuomaiOrder;
 import com.huomai.business.mapper.HuomaiOrderMapper;
 import com.huomai.business.service.IHuomaiOrderService;
 import com.huomai.business.vo.HuomaiOrderVo;
+import com.huomai.business.vo.HuomaiVideoCommentReplyVo;
 import com.huomai.common.core.page.PagePlus;
 import com.huomai.common.core.page.TableDataInfo;
 import com.huomai.common.utils.PageUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,6 +32,9 @@ import java.util.Map;
 @Service
 public class HuomaiOrderServiceImpl extends ServiceImpl<HuomaiOrderMapper, HuomaiOrder> implements IHuomaiOrderService {
 
+	@Autowired
+	private HuomaiOrderMapper orderMapper;
+
 	@Override
 	public HuomaiOrderVo queryById(Long id) {
 		return getVoById(id, HuomaiOrderVo.class);
@@ -37,8 +42,8 @@ public class HuomaiOrderServiceImpl extends ServiceImpl<HuomaiOrderMapper, Huoma
 
 	@Override
 	public TableDataInfo<HuomaiOrderVo> queryPageList(HuomaiOrderQueryBo bo) {
-		PagePlus<HuomaiOrder, HuomaiOrderVo> result = pageVo(PageUtils.buildPagePlus(), buildQueryWrapper(bo), HuomaiOrderVo.class);
-		return PageUtils.buildDataInfo(result);
+		List<HuomaiOrderVo> list = orderMapper.queryList(PageUtils.buildPage(),bo);
+		return PageUtils.buildDataInfo(list);
 	}
 
 	@Override
@@ -49,14 +54,14 @@ public class HuomaiOrderServiceImpl extends ServiceImpl<HuomaiOrderMapper, Huoma
 	private LambdaQueryWrapper<HuomaiOrder> buildQueryWrapper(HuomaiOrderQueryBo bo) {
 		Map<String, Object> params = bo.getParams();
 		LambdaQueryWrapper<HuomaiOrder> lqw = Wrappers.lambdaQuery();
-		lqw.eq(StrUtil.isNotBlank(bo.getOrderNo()), HuomaiOrder::getOrderNo, bo.getOrderNo());
-		lqw.eq(bo.getUserId() != null, HuomaiOrder::getUserId, bo.getUserId());
-		lqw.eq(bo.getTime() != null, HuomaiOrder::getTime, bo.getTime());
-		lqw.eq(StrUtil.isNotBlank(bo.getPage()), HuomaiOrder::getPage, bo.getPage());
-		lqw.eq(bo.getAmount() != null, HuomaiOrder::getAmount, bo.getAmount());
-		lqw.eq(bo.getPayTime() != null, HuomaiOrder::getPayTime, bo.getPayTime());
-		lqw.eq(StrUtil.isNotBlank(bo.getStatus()), HuomaiOrder::getStatus, bo.getStatus());
-		lqw.eq(StrUtil.isNotBlank(bo.getPayWay()), HuomaiOrder::getPayWay, bo.getPayWay());
+//		lqw.eq(StrUtil.isNotBlank(bo.getOrderNo()), HuomaiOrder::getOrderNo, bo.getOrderNo());
+//		lqw.eq(bo.getUserId() != null, HuomaiOrder::getUserId, bo.getUserId());
+//		lqw.eq(bo.getTime() != null, HuomaiOrder::getTime, bo.getTime());
+//		lqw.eq(StrUtil.isNotBlank(bo.getPage()), HuomaiOrder::getPage, bo.getPage());
+//		lqw.eq(bo.getAmount() != null, HuomaiOrder::getAmount, bo.getAmount());
+//		lqw.eq(bo.getPayTime() != null, HuomaiOrder::getPayTime, bo.getPayTime());
+//		lqw.eq(StrUtil.isNotBlank(bo.getStatus()), HuomaiOrder::getStatus, bo.getStatus());
+//		lqw.eq(StrUtil.isNotBlank(bo.getPayWay()), HuomaiOrder::getPayWay, bo.getPayWay());
 		return lqw;
 	}
 

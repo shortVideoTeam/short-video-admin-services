@@ -2,7 +2,9 @@ package com.huomai.business.mapper;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.huomai.business.bo.HuomaiVideoCommentQueryBo;
+import com.huomai.business.bo.HuomaiVideoCommentReplyQueryBo;
 import com.huomai.business.domain.HuomaiVideoComment;
+import com.huomai.business.vo.HuomaiVideoCommentReplyVo;
 import com.huomai.business.vo.HuomaiVideoCommentVo;
 import com.huomai.common.core.page.BaseMapperPlus;
 import org.apache.ibatis.annotations.Param;
@@ -23,4 +25,12 @@ public interface HuomaiVideoCommentMapper extends BaseMapperPlus<HuomaiVideoComm
 	 * @return
 	 */
 	List<HuomaiVideoCommentVo> queryList(@Param("page") Page page, @Param("bo") HuomaiVideoCommentQueryBo bo);
+
+
+	/**
+	 * 查询评论回复详情
+	 * @param page
+	 * @return
+	 */
+	List<HuomaiVideoCommentReplyVo> queryListDetail(@Param("page") Page page, @Param("bo") HuomaiVideoCommentReplyQueryBo bo);
 }

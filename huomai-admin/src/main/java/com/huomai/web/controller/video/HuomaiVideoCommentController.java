@@ -3,7 +3,9 @@ package com.huomai.web.controller.video;
 import com.huomai.business.bo.HuomaiVideoCommentAddBo;
 import com.huomai.business.bo.HuomaiVideoCommentEditBo;
 import com.huomai.business.bo.HuomaiVideoCommentQueryBo;
+import com.huomai.business.bo.HuomaiVideoCommentReplyQueryBo;
 import com.huomai.business.service.IHuomaiVideoCommentService;
+import com.huomai.business.vo.HuomaiVideoCommentReplyVo;
 import com.huomai.business.vo.HuomaiVideoCommentVo;
 import com.huomai.common.annotation.Log;
 import com.huomai.common.core.controller.BaseController;
@@ -66,10 +68,9 @@ public class HuomaiVideoCommentController extends BaseController {
 	 */
 	@ApiOperation("获取评论详细信息")
 	@PreAuthorize("@ss.hasPermi('business:comment:query')")
-	@GetMapping("/{commentId}")
-	public AjaxResult<HuomaiVideoCommentVo> getInfo(@NotNull(message = "主键不能为空")
-													@PathVariable("commentId") Long commentId) {
-		return AjaxResult.success(iHuomaiVideoCommentService.queryById(commentId));
+	@GetMapping("/detail")
+	public TableDataInfo<HuomaiVideoCommentReplyVo> getInfo(@Validated HuomaiVideoCommentReplyQueryBo bo) {
+		return iHuomaiVideoCommentService.queryById(bo);
 	}
 
 	/**

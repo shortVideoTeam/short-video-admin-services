@@ -3,7 +3,9 @@ package com.huomai.business.service;
 import com.huomai.business.bo.HuomaiVideoCommentAddBo;
 import com.huomai.business.bo.HuomaiVideoCommentEditBo;
 import com.huomai.business.bo.HuomaiVideoCommentQueryBo;
+import com.huomai.business.bo.HuomaiVideoCommentReplyQueryBo;
 import com.huomai.business.domain.HuomaiVideoComment;
+import com.huomai.business.vo.HuomaiVideoCommentReplyVo;
 import com.huomai.business.vo.HuomaiVideoCommentVo;
 import com.huomai.common.core.page.IServicePlus;
 import com.huomai.common.core.page.TableDataInfo;
@@ -23,7 +25,7 @@ public interface IHuomaiVideoCommentService extends IServicePlus<HuomaiVideoComm
 	 *
 	 * @return
 	 */
-	HuomaiVideoCommentVo queryById(Long commentId);
+	TableDataInfo<HuomaiVideoCommentReplyVo> queryById(HuomaiVideoCommentReplyQueryBo bo);
 
 	/**
 	 * 查询列表

@@ -3,6 +3,7 @@ package com.huomai.web.controller.order;
 import com.huomai.business.bo.HuomaiOrderAddBo;
 import com.huomai.business.bo.HuomaiOrderEditBo;
 import com.huomai.business.bo.HuomaiOrderQueryBo;
+import com.huomai.business.bo.HuomaiUserEditBo;
 import com.huomai.business.service.IHuomaiOrderService;
 import com.huomai.business.vo.HuomaiOrderVo;
 import com.huomai.common.annotation.Log;
@@ -61,27 +62,29 @@ public class HuomaiOrderController extends BaseController {
 		return util.exportExcel(list, "订单记录");
 	}
 
-	/**
-	 * 获取订单记录详细信息
-	 */
-	@ApiOperation("获取订单记录详细信息")
-	@PreAuthorize("@ss.hasPermi('business:order:query')")
-	@GetMapping("/{id}")
-	public AjaxResult<HuomaiOrderVo> getInfo(@NotNull(message = "主键不能为空")
-											 @PathVariable("id") Long id) {
-		return AjaxResult.success(iHuomaiOrderService.queryById(id));
-	}
 
-	/**
-	 * 新增订单记录
-	 */
-	@ApiOperation("新增订单记录")
-	@PreAuthorize("@ss.hasPermi('business:order:add')")
-	@Log(title = "订单记录", businessType = BusinessType.INSERT)
-	@PostMapping()
-	public AjaxResult<Void> add(@Validated @RequestBody HuomaiOrderAddBo bo) {
-		return toAjax(iHuomaiOrderService.insertByAddBo(bo) ? 1 : 0);
-	}
+
+//	/**
+//	 * 获取订单记录详细信息
+//	 */
+//	@ApiOperation("获取订单记录详细信息")
+//	@PreAuthorize("@ss.hasPermi('business:order:query')")
+//	@GetMapping("/{id}")
+//	public AjaxResult<HuomaiOrderVo> getInfo(@NotNull(message = "主键不能为空")
+//											 @PathVariable("id") Long id) {
+//		return AjaxResult.success(iHuomaiOrderService.queryById(id));
+//	}
+
+//	/**
+//	 * 新增订单记录
+//	 */
+//	@ApiOperation("新增订单记录")
+//	@PreAuthorize("@ss.hasPermi('business:order:add')")
+//	@Log(title = "订单记录", businessType = BusinessType.INSERT)
+//	@PostMapping()
+//	public AjaxResult<Void> add(@Validated @RequestBody HuomaiOrderAddBo bo) {
+//		return toAjax(iHuomaiOrderService.insertByAddBo(bo) ? 1 : 0);
+//	}
 
 	/**
 	 * 修改订单记录
@@ -94,15 +97,15 @@ public class HuomaiOrderController extends BaseController {
 		return toAjax(iHuomaiOrderService.updateByEditBo(bo) ? 1 : 0);
 	}
 
-	/**
-	 * 删除订单记录
-	 */
-	@ApiOperation("删除订单记录")
-	@PreAuthorize("@ss.hasPermi('business:order:remove')")
-	@Log(title = "订单记录", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
-	public AjaxResult<Void> remove(@NotEmpty(message = "主键不能为空")
-								   @PathVariable Long[] ids) {
-		return toAjax(iHuomaiOrderService.deleteWithValidByIds(Arrays.asList(ids), true) ? 1 : 0);
-	}
+//	/**
+//	 * 删除订单记录
+//	 */
+//	@ApiOperation("删除订单记录")
+//	@PreAuthorize("@ss.hasPermi('business:order:remove')")
+//	@Log(title = "订单记录", businessType = BusinessType.DELETE)
+//	@DeleteMapping("/{ids}")
+//	public AjaxResult<Void> remove(@NotEmpty(message = "主键不能为空")
+//								   @PathVariable Long[] ids) {
+//		return toAjax(iHuomaiOrderService.deleteWithValidByIds(Arrays.asList(ids), true) ? 1 : 0);
+//	}
 }

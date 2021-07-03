@@ -1,9 +1,12 @@
 package com.huomai.business.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huomai.common.annotation.Excel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.Date;
 
 
 /**
@@ -72,6 +75,43 @@ public class HuomaiVideoCommentReplyVo {
 	@Excel(name = "点赞数")
 	@ApiModelProperty("点赞数")
 	private Long star;
+
+
+	/**
+	 * 创建时间
+	 */
+	@ApiModelProperty("创建时间")
+	@Excel(name = "创建时间", width = 30, dateFormat = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
+
+	/**
+	 * 用户火脉号
+	 */
+	@Excel(name = "用户火脉号")
+	@ApiModelProperty("用户火脉号")
+	private Long uuid;
+
+	/**
+	 * 用户昵称
+	 */
+	@Excel(name = "用户昵称")
+	@ApiModelProperty("用户昵称")
+	private String nickName;
+
+	/**
+	 * 用户头像
+	 */
+	@Excel(name = "用户头像")
+	@ApiModelProperty("用户头像")
+	private String avatar;
+
+	/**
+	 * 用户手机号
+	 */
+	@Excel(name = "用户手机号")
+	@ApiModelProperty("用户手机号")
+	private String phone;
 
 
 }

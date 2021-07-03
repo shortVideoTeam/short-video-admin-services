@@ -53,17 +53,7 @@ public class HuomaiOrderQueryBo extends BaseEntity {
 	 * 用户ID
 	 */
 	@ApiModelProperty("用户ID")
-	private Long userId;
-	/**
-	 * 推广时长
-	 */
-	@ApiModelProperty("推广时长")
-	private Long time;
-	/**
-	 * 推荐页面，1-热门页
-	 */
-	@ApiModelProperty("推荐页面，1-热门页")
-	private String page;
+	private Long uuid;
 	/**
 	 * 金额
 	 */
@@ -85,5 +75,17 @@ public class HuomaiOrderQueryBo extends BaseEntity {
 	 */
 	@ApiModelProperty("支付方式 1-微信 2-余额")
 	private String payWay;
+
+	/**
+	 * 类型
+	 */
+	@ApiModelProperty("类型")
+	private String orderType;
+
+	/**
+	 * 审核状态
+	 */
+	@ApiModelProperty("审核状态")
+	private String auditStatus;
 
 }

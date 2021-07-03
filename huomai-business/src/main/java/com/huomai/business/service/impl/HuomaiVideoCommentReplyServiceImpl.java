@@ -49,13 +49,13 @@ public class HuomaiVideoCommentReplyServiceImpl extends ServiceImpl<HuomaiVideoC
 	private LambdaQueryWrapper<HuomaiVideoCommentReply> buildQueryWrapper(HuomaiVideoCommentReplyQueryBo bo) {
 		Map<String, Object> params = bo.getParams();
 		LambdaQueryWrapper<HuomaiVideoCommentReply> lqw = Wrappers.lambdaQuery();
-		lqw.eq(StrUtil.isNotBlank(bo.getReplyType()), HuomaiVideoCommentReply::getReplyType, bo.getReplyType());
-		lqw.eq(bo.getCommentId() != null, HuomaiVideoCommentReply::getCommentId, bo.getCommentId());
-		lqw.eq(bo.getReplyId() != null, HuomaiVideoCommentReply::getReplyId, bo.getReplyId());
-		lqw.eq(StrUtil.isNotBlank(bo.getContent()), HuomaiVideoCommentReply::getContent, bo.getContent());
-		lqw.eq(bo.getReplyUserId() != null, HuomaiVideoCommentReply::getReplyUserId, bo.getReplyUserId());
-		lqw.eq(bo.getToUserId() != null, HuomaiVideoCommentReply::getToUserId, bo.getToUserId());
-		lqw.eq(bo.getStar() != null, HuomaiVideoCommentReply::getStar, bo.getStar());
+//		lqw.eq(StrUtil.isNotBlank(bo.getReplyType()), HuomaiVideoCommentReply::getReplyType, bo.getReplyType());
+//		lqw.eq(bo.getCommentId() != null, HuomaiVideoCommentReply::getCommentId, bo.getCommentId());
+//		lqw.eq(bo.getReplyId() != null, HuomaiVideoCommentReply::getReplyId, bo.getReplyId());
+//		lqw.eq(StrUtil.isNotBlank(bo.getContent()), HuomaiVideoCommentReply::getContent, bo.getContent());
+//		lqw.eq(bo.getReplyUserId() != null, HuomaiVideoCommentReply::getReplyUserId, bo.getReplyUserId());
+//		lqw.eq(bo.getToUserId() != null, HuomaiVideoCommentReply::getToUserId, bo.getToUserId());
+//		lqw.eq(bo.getStar() != null, HuomaiVideoCommentReply::getStar, bo.getStar());
 		return lqw;
 	}
 

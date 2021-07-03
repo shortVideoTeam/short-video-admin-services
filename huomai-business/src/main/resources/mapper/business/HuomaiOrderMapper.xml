@@ -4,5 +4,46 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huomai.business.mapper.HuomaiOrderMapper">
 
+    <select id="queryList" resultType="com.huomai.business.vo.HuomaiOrderVo">
+        SELECT
+            o.*,
+            u.uuid,
+            u.openid,
+            u.avatar,
+            u.nick_name,
+            u.phone
+        FROM
+            huomai_order AS o
+            LEFT JOIN huomai_user AS u ON u.user_id = o.user_id
+        WHERE
+            1 = 1
+        <if test="bo.orderNo != null and bo.orderNo != '' ">
+            AND o.order_no = #{bo.orderNo}
+        </if>
+        <if test="bo.uuid != null and bo.uuid != '' ">
+            AND u.uuid = #{bo.uuid}
+        </if>
+        <if test="bo.amount != null and bo.amount != '' ">
+            AND o.amount = #{bo.amount}
+        </if>
+        <if test="bo.payTime != null and bo.payTime != '' ">
+            AND date_format(o.pay_time,'%y%m%d') = date_format(#{bo.payTime},'%y%m%d')
+        </if>
+        <if test="bo.status != null and bo.status != '' ">
+            AND o.`status` = #{bo.status}
+        </if>
+        <if test="bo.payWay != null and bo.payWay != '' ">
+            AND o.pay_way = #{bo.payWay}
+        </if>
+        <if test="bo.orderType != null and bo.orderType != '' ">
+            AND o.order_type = #{bo.orderType}
+        </if>
+        <if test="bo.auditStatus != null and bo.auditStatus != '' ">
+            AND o.audit_status = #{bo.auditStatus}
+        </if>
+        <if test="bo.createTime != null and bo.createTime != '' ">
+            AND date_format(o.create_time,'%y%m%d') = date_format(#{bo.createTime},'%y%m%d')
+        </if>
+    </select>
 
 </mapper>

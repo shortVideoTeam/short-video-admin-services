@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huomai.business.bo.HuomaiVideoCommentAddBo;
 import com.huomai.business.bo.HuomaiVideoCommentEditBo;
 import com.huomai.business.bo.HuomaiVideoCommentQueryBo;
+import com.huomai.business.bo.HuomaiVideoCommentReplyQueryBo;
 import com.huomai.business.domain.HuomaiVideoComment;
 import com.huomai.business.mapper.HuomaiVideoCommentMapper;
 import com.huomai.business.service.IHuomaiVideoCommentService;
+import com.huomai.business.vo.HuomaiVideoCommentReplyVo;
 import com.huomai.business.vo.HuomaiVideoCommentVo;
 import com.huomai.common.core.page.TableDataInfo;
 import com.huomai.common.utils.PageUtils;
@@ -33,8 +35,9 @@ public class HuomaiVideoCommentServiceImpl extends ServiceImpl<HuomaiVideoCommen
 	private HuomaiVideoCommentMapper commentMapper;
 
 	@Override
-	public HuomaiVideoCommentVo queryById(Long commentId) {
-		return getVoById(commentId, HuomaiVideoCommentVo.class);
+	public TableDataInfo<HuomaiVideoCommentReplyVo> queryById(HuomaiVideoCommentReplyQueryBo bo) {
+		List<HuomaiVideoCommentReplyVo> list = commentMapper.queryListDetail(PageUtils.buildPage(),bo);
+		return PageUtils.buildDataInfo(list);
 	}
 
 	@Override

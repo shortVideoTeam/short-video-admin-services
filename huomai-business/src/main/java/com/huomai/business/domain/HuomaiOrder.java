@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.huomai.common.annotation.Excel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -78,5 +81,32 @@ public class HuomaiOrder implements Serializable {
 	 */
 	@TableField(fill = FieldFill.INSERT)
 	private Date createTime;
+
+	/**
+	 * 审核状态
+	 */
+	@ApiModelProperty("审核状态")
+	private String auditStatus;
+
+	/**
+	 * 审核时间
+	 */
+	@ApiModelProperty("审核时间")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date auditTime;
+
+	/**
+	 * 备注
+	 */
+	@Excel(name="备注")
+	@ApiModelProperty("备注")
+	private String remark;
+
+	/**
+	 * 微信流水号
+	 */
+	@Excel(name = "微信流水号")
+	@ApiModelProperty("微信流水号")
+	private String wxOrderNo;
 
 }
