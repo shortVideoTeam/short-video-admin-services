@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huomai.business.mapper.HuomaiPromoteConfigMapper">
+
+    <resultMap type="com.huomai.business.domain.HuomaiPromoteConfig" id="HuomaiPromoteConfigResult">
+        <result property="id" column="id"/>
+        <result property="inviteNum" column="invite_num"/>
+        <result property="money" column="money"/>
+        <result property="platformRate" column="platform_rate"/>
+        <result property="inviteRate" column="invite_rate"/>
+        <result property="boosterRate" column="booster_rate"/>
+        <result property="maxNum" column="max_num"/>
+    </resultMap>
+
+
+</mapper>
